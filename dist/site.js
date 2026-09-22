@@ -21,6 +21,7 @@
     services.forEach((service, index) => {
       const card = create('article', 'service-card');
       card.append(create('span', 'service-number', String(index + 1).padStart(2, '0')));
+      if (service.status) card.append(create('span', 'service-status', service.status));
       card.append(create('h3', '', service.title));
       if (service.audience) card.append(create('p', 'service-audience', '适合：' + service.audience));
       if (service.description) card.append(create('p', 'service-description', service.description));
@@ -29,10 +30,11 @@
         service.deliverables.forEach(item => list.append(create('li', '', item)));
         card.append(list);
       }
+      if (service.note) card.append(create('p', 'service-note', service.note));
       const action = create('div', 'service-action');
       if (service.price) action.append(create('strong', 'service-price', service.price));
       const url = safeURL(service.url);
-      const link = create('a', 'button', url ? '了解详情 ↗' : '咨询这项服务 ↗');
+      const link = create('a', 'button', url ? (service.cta || '了解详情') + ' ↗' : '咨询这项服务 ↗');
       link.href = url || '#contact';
       action.append(link);
       card.append(action);
