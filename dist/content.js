@@ -7,22 +7,23 @@ window.JINCHUAN_CONTENT = {
       id: 'useful-mcp',
       title: '有用之集·MCP',
       audience: '个人开发者和使用者',
-      description: '发现能帮你解决问题的 MCP。按需求查找工具，了解用途与接入信息，再选择适合自己的方案。',
-      deliverables: ['浏览 MCP 工具与使用场景', '按关键词、分类和费用筛选', '查看详情、文档与原始链接'],
+      description: '找到适合你的 MCP 工具。按用途和费用筛选，查看文档与接入信息。',
+      deliverables: ['工具发现', '分类筛选', '接入文档'],
       url: 'https://mcpnook.vercel.app/',
       cta: '进入有用之集',
-      status: 'MCP 工具目录'
+      status: '可直接访问',
+      note: '查看工具详情与原始链接，按实际需要选择。'
     },
     {
       id: 'codex-reset',
       title: 'Codex 重置',
       audience: '关注 Codex 额度重置的使用者',
-      description: '集中查看 Codex 公开额度重置消息，了解公告和历史记录，方便安排你的使用节奏。',
-      deliverables: ['查看公开重置消息与来源', '回看历史重置记录', '通过 RSS 订阅更新'],
+      description: '关注 Codex 额度重置消息。集中看公告、查历史，让每一次公开重置有迹可循。',
+      deliverables: ['重置动态', '历史记录', 'RSS 订阅'],
       url: 'https://resetping.sunmillionai.chatgpt.site',
       cta: '查看私密预览',
       status: '私密预览 · 仅站主可访问',
-      note: '追踪公开的额外重置消息，不提供账号额度重置操作。'
+      note: '仅追踪公开消息；当前预览需站主账号访问。'
     }
   ],
   contacts: []

@@ -20,24 +20,32 @@
     serviceList.replaceChildren();
     services.forEach((service, index) => {
       const card = create('article', 'service-card');
-      card.append(create('span', 'service-number', String(index + 1).padStart(2, '0')));
-      if (service.status) card.append(create('span', 'service-status', service.status));
+      const top = create('div', 'card-top');
+      top.append(create('span', 'product-icon', index === 0 ? 'MCP' : '↻'));
+      top.firstChild.setAttribute('aria-hidden', 'true');
+      if (service.status) top.append(create('span', 'service-status', service.status));
+      card.append(top);
+      card.append(create('span', 'service-kicker', index === 0 ? 'DISCOVER / 找工具' : 'STAY UPDATED / 看动态'));
       card.append(create('h3', '', service.title));
-      if (service.audience) card.append(create('p', 'service-audience', '适合：' + service.audience));
       if (service.description) card.append(create('p', 'service-description', service.description));
       if (Array.isArray(service.deliverables) && service.deliverables.length) {
         const list = create('ul', 'deliverables');
         service.deliverables.forEach(item => list.append(create('li', '', item)));
         card.append(list);
       }
-      if (service.note) card.append(create('p', 'service-note', service.note));
+      if (service.audience) card.append(create('p', 'service-audience', '适合：' + service.audience));
       const action = create('div', 'service-action');
       if (service.price) action.append(create('strong', 'service-price', service.price));
       const url = safeURL(service.url);
-      const link = create('a', 'button', url ? (service.cta || '了解详情') + ' ↗' : '咨询这项服务 ↗');
+      const link = create('a', 'button');
+      link.append(create('span', '', url ? service.cta || '了解详情' : '咨询这项服务'));
+      const arrow = create('span', 'arrow', '↗');
+      arrow.setAttribute('aria-hidden', 'true');
+      link.append(arrow);
       link.href = url || '#contact';
       action.append(link);
       card.append(action);
+      if (service.note) card.append(create('p', 'service-note', service.note));
       serviceList.append(card);
     });
   }
