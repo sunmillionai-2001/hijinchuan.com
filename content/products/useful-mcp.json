@@ -1,0 +1,19 @@
+{
+  "id": "useful-mcp",
+  "title": "有用之集·MCP",
+  "symbol": "MCP",
+  "kicker": "DISCOVER / 找工具",
+  "description": "找到适合你的 MCP 工具。按用途和费用筛选，查看文档与接入信息。",
+  "audience": "个人开发者和使用者",
+  "tags": [
+    "AI / MCP",
+    "工具发现",
+    "接入文档"
+  ],
+  "status": "已上线",
+  "url": "https://mcpnook.vercel.app/",
+  "cta": "访问产品",
+  "note": "查看工具详情与原始链接，按实际需要选择。",
+  "order": 1,
+  "published": true
+}

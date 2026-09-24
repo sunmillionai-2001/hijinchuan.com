@@ -1,0 +1,193 @@
+media:
+  input: dist/uploads
+  output: /uploads
+  categories: [image]
+  rename: safe
+
+content:
+  - name: updates
+    label: 动态
+    type: collection
+    path: content/updates
+    format: json
+    filename: "{year}-{month}-{day}-{hour}-{minute}-{second}.json"
+    view:
+      fields: [date, text, published, demo]
+      primary: text
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: date
+        label: 日期
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: text
+        label: 内容
+        type: text
+        required: true
+      - name: tags
+        label: 标签
+        type: string
+        list: true
+      - name: demo
+        label: 演示数据（自动标注）
+        type: boolean
+        default: false
+      - name: published
+        label: 在网站展示
+        type: boolean
+        default: false
+
+  - name: products
+    label: 产品
+    type: collection
+    path: content/products
+    format: json
+    filename: "{id}.json"
+    view:
+      fields: [title, status, published]
+      primary: title
+    fields:
+      - name: id
+        label: 唯一标识（英文和短横线）
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+      - name: title
+        label: 名称
+        type: string
+        required: true
+      - name: description
+        label: 一句话介绍
+        type: text
+        required: true
+      - name: status
+        label: 状态
+        type: string
+        required: true
+      - name: audience
+        label: 适合谁
+        type: string
+      - name: tags
+        label: 标签
+        type: string
+        list: true
+      - name: url
+        label: 访问地址
+        type: string
+      - name: cta
+        label: 按钮文案
+        type: string
+      - name: note
+        label: 补充说明
+        type: text
+      - name: symbol
+        label: 卡片符号
+        type: string
+      - name: kicker
+        label: 英文小标题
+        type: string
+      - name: order
+        label: 显示顺序
+        type: number
+      - name: published
+        label: 在网站展示
+        type: boolean
+        default: false
+
+  - name: notes
+    label: 思考笔记
+    type: collection
+    path: content/notes
+    format: json
+    filename: "{id}.json"
+    view:
+      fields: [title, category, published]
+      primary: title
+    fields:
+      - name: id
+        label: 唯一标识（英文和短横线）
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+      - name: title
+        label: 标题
+        type: string
+        required: true
+      - name: summary
+        label: 摘要
+        type: text
+        required: true
+      - name: category
+        label: 栏目标签
+        type: string
+      - name: tags
+        label: 主题标签
+        type: string
+        list: true
+      - name: paragraphs
+        label: 正文段落
+        type: text
+        list: true
+      - name: steps
+        label: 步骤（可选）
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{heading}"
+        fields:
+          - name: heading
+            label: 小标题
+            type: string
+          - name: copy
+            label: 说明
+            type: text
+      - name: quote
+        label: 引用（可选）
+        type: text
+      - name: order
+        label: 显示顺序
+        type: number
+      - name: published
+        label: 在网站展示
+        type: boolean
+        default: false
+
+  - name: social-links
+    label: 连接方式
+    type: collection
+    path: content/social-links
+    format: json
+    filename: "{platform}.json"
+    view:
+      fields: [label, value, published]
+      primary: label
+    fields:
+      - name: platform
+        label: 平台标识（英文）
+        type: string
+        required: true
+        pattern: "^[a-z0-9-]+$"
+      - name: label
+        label: 平台名称
+        type: string
+        required: true
+      - name: value
+        label: 显示文字
+        type: string
+      - name: url
+        label: 公开链接
+        type: string
+        required: true
+      - name: order
+        label: 显示顺序
+        type: number
+      - name: published
+        label: 在网站展示
+        type: boolean
+        default: false

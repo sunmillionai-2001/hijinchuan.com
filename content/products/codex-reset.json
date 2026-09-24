@@ -1,0 +1,19 @@
+{
+  "id": "codex-reset",
+  "title": "Codex 重置",
+  "symbol": "↻",
+  "kicker": "STAY UPDATED / 看动态",
+  "description": "关注 Codex 额度重置消息。集中看公告、查历史，让每一次公开重置有迹可循。",
+  "audience": "关注 Codex 额度重置的使用者",
+  "tags": [
+    "AI / Codex",
+    "重置动态",
+    "RSS 订阅"
+  ],
+  "status": "私密预览",
+  "url": "https://resetping.sunmillionai.chatgpt.site",
+  "cta": "查看私密预览",
+  "note": "仅追踪公开消息；当前预览需站主账号访问。",
+  "order": 2,
+  "published": true
+}

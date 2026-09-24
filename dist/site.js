@@ -28,7 +28,8 @@
     card.append(make('p', 'service-description', item.description));
     const tags = make('ul', 'deliverables');
     (item.tags || []).forEach(tag => tags.append(make('li', '', tag)));
-    card.append(tags, make('p', 'service-audience', '适合：' + item.audience));
+    card.append(tags);
+    if (item.audience) card.append(make('p', 'service-audience', '适合：' + item.audience));
     const url = safeURL(item.url);
     if (url) {
       const action = make('a', 'button');
