@@ -108,8 +108,12 @@
   mount('#product-list', product, data.products);
   mount('#thought-list', noteLink, data.notes, 3);
   mount('#note-list', noteDetail, data.notes);
-  mount('#updates-home', update, data.updates, 5);
-  mount('#updates-all', update, data.updates);
+  // 首页和完整页使用同一份动态，按日期倒序；首页由 CSS 限高并在内部滚动。
+  const updates = Array.isArray(data.updates)
+    ? [...data.updates].sort((a, b) => String(b.date).localeCompare(String(a.date)))
+    : [];
+  mount('#updates-home', update, updates);
+  mount('#updates-all', update, updates);
   const socialItems = (data.socialLinks || []).map(social).filter(Boolean);
   for (const selector of ['#contact-content', '#connect-list']) {
     const target = document.querySelector(selector);

@@ -40,6 +40,17 @@ nav a { white-space: nowrap; }
 .thought-arrow { font-size: 22px; }
 .thought-row:hover .thought-arrow { transform: translate(3px, -3px); }
 .updates-section { margin-top: 70px; }
+.updates-section .updates-list {
+  height: 168px;
+  max-width: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+  scrollbar-color: #9b907c transparent;
+  padding: 4px 20px 0 0;
+}
+.updates-section .updates-list:focus-visible { outline: 3px solid #15577c; outline-offset: 5px; }
 .updates-list { list-style: none; max-width: 800px; margin: 0; padding: 0; border-left: 1px solid #24211f6b; }
 .update-row { display: grid; grid-template-columns: 120px 1fr; position: relative; gap: 24px; padding: 0 0 28px 24px; }
 .update-row::before { content: ''; position: absolute; width: 9px; height: 9px; left: -5px; top: 7px; border: 2px solid var(--ink); border-radius: 50%; background: var(--yellow); }
