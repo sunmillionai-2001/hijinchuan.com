@@ -17,6 +17,54 @@
     if (!target || !Array.isArray(items)) return;
     target.replaceChildren(...items.slice(0, limit || items.length).map(renderer));
   };
+  const copyWechat = (action, feedback, wechat) => {
+    action.addEventListener('click', async () => {
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+        await navigator.clipboard.writeText(wechat);
+        feedback.textContent = '微信号已复制，请在微信中搜索添加。';
+      } catch {
+        feedback.textContent = '复制未成功，请手动复制上方微信号。';
+      }
+    });
+  };
+  const featuredProduct = item => {
+    const card = make('article', 'recharge-card');
+    card.id = item.id;
+    const intro = make('div', 'recharge-intro');
+    const eyebrow = make('div', 'recharge-eyebrow');
+    const star = make('span', 'recharge-star', '✳');
+    star.setAttribute('aria-hidden', 'true');
+    eyebrow.append(star, make('span', '', item.kicker));
+    const title = make('h2', 'recharge-title', item.title);
+    intro.append(eyebrow, title, make('p', 'recharge-description', item.description));
+    const tags = make('ul', 'recharge-tags');
+    (item.tags || []).forEach(tag => tags.append(make('li', '', tag)));
+    intro.append(tags);
+
+    const contact = make('div', 'recharge-contact');
+    contact.append(make('span', 'recharge-contact-label', item.status));
+    const wechat = typeof item.wechat === 'string' ? item.wechat.trim() : '';
+    if (wechat) contact.append(make('p', 'recharge-wechat', wechat));
+    const url = safeURL(item.url);
+    if (url) {
+      const action = make('a', 'recharge-button', item.cta || '了解详情');
+      action.href = url;
+      action.target = '_blank';
+      action.rel = 'noopener noreferrer';
+      contact.append(action);
+    } else if (wechat) {
+      const action = make('button', 'recharge-button', item.cta || '复制微信号');
+      action.type = 'button';
+      const feedback = make('p', 'recharge-feedback');
+      feedback.setAttribute('role', 'status');
+      copyWechat(action, feedback, wechat);
+      contact.append(action, feedback);
+    }
+    if (item.note) contact.append(make('p', 'recharge-note', item.note));
+    card.append(intro, contact);
+    return card;
+  };
   const product = (item, index) => {
     const card = make('article', 'service-card');
     card.id = item.id;
@@ -49,15 +97,7 @@
       action.append(make('span', '', item.cta || '复制微信号'), make('span', 'arrow', '↗'));
       const feedback = make('p', 'service-note');
       feedback.setAttribute('role', 'status');
-      action.addEventListener('click', async () => {
-        try {
-          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
-          await navigator.clipboard.writeText(wechat);
-          feedback.textContent = '微信号已复制，请在微信中搜索添加。';
-        } catch {
-          feedback.textContent = '复制未成功，请手动复制上方微信号。';
-        }
-      });
+      copyWechat(action, feedback, wechat);
       const actionWrap = make('div', 'service-action');
       actionWrap.append(action);
       card.append(actionWrap, feedback);
@@ -125,8 +165,12 @@
     link.append(icon, detail, make('span', 'social-arrow', '↗'));
     return link;
   };
-  mount('#service-list', product, data.products);
-  mount('#product-list', product, data.products);
+  const products = Array.isArray(data.products) ? data.products : [];
+  const featured = products.filter(item => item.id === 'gpt-recharge');
+  const otherProducts = products.filter(item => item.id !== 'gpt-recharge');
+  mount('#featured-service', featuredProduct, featured);
+  mount('#service-list', product, otherProducts);
+  mount('#product-list', product, otherProducts);
   mount('#thought-list', noteLink, data.notes, 3);
   mount('#note-list', noteDetail, data.notes);
   // 首页和完整页使用同一份动态，按日期倒序；首页由 CSS 限高并在内部滚动。

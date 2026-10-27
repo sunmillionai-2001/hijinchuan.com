@@ -2,6 +2,24 @@
 window.JINCHUAN_CONTENT = {
   "products": [
     {
+      "id": "gpt-recharge",
+      "title": "GPT 代充",
+      "symbol": "GPT",
+      "kicker": "SUBSCRIPTION / 订阅服务",
+      "description": "ChatGPT 订阅代充服务，具体方案与流程可进一步咨询。",
+      "audience": "有 ChatGPT 订阅需求的用户",
+      "tags": [
+        "ChatGPT",
+        "订阅代充",
+        "服务咨询"
+      ],
+      "status": "微信咨询",
+      "url": "",
+      "wechat": "jinchuan-ai",
+      "cta": "复制微信号",
+      "note": "复制微信号后，在微信中搜索添加并咨询。"
+    },
+    {
       "id": "useful-mcp",
       "title": "有用之集·MCP",
       "symbol": "MCP",
@@ -34,24 +52,6 @@ window.JINCHUAN_CONTENT = {
       "url": "https://resetping.sunmillionai.chatgpt.site",
       "cta": "查看私密预览",
       "note": "仅追踪公开消息；当前预览需站主账号访问。"
-    },
-    {
-      "id": "gpt-recharge",
-      "title": "GPT 代充",
-      "symbol": "GPT",
-      "kicker": "SUBSCRIPTION / 订阅服务",
-      "description": "ChatGPT 订阅代充服务，具体方案与流程可进一步咨询。",
-      "audience": "有 ChatGPT 订阅需求的用户",
-      "tags": [
-        "ChatGPT",
-        "订阅代充",
-        "服务咨询"
-      ],
-      "status": "微信咨询",
-      "url": "",
-      "wechat": "jinchuan-ai",
-      "cta": "复制微信号",
-      "note": "复制微信号后，在微信中搜索添加并咨询。"
     }
   ],
   "notes": [
