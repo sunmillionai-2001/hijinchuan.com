@@ -63,6 +63,7 @@ nav a { white-space: nowrap; }
 .contact-strip h2 { font-size: 28px; }
 .social-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 260px)); }
 .social-card { min-height: 72px; }
+.service-wechat { margin: 0 0 14px; font-size: 14px; font-weight: 700; overflow-wrap: anywhere; user-select: text; }
 .page-intro { padding: 62px 0 58px; border-bottom: 1px solid #24211f35; }
 .page-intro h1 { font-size: clamp(42px, 5.5vw, 68px); margin: 15px 0 12px; line-height: 1.2; }
 .page-intro p { font-size: 16px; color: var(--muted); max-width: 640px; }

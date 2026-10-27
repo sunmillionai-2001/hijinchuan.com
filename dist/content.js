@@ -34,6 +34,24 @@ window.JINCHUAN_CONTENT = {
       "url": "https://resetping.sunmillionai.chatgpt.site",
       "cta": "查看私密预览",
       "note": "仅追踪公开消息；当前预览需站主账号访问。"
+    },
+    {
+      "id": "gpt-recharge",
+      "title": "GPT 代充",
+      "symbol": "GPT",
+      "kicker": "SUBSCRIPTION / 订阅服务",
+      "description": "ChatGPT 订阅代充服务，具体方案与流程可进一步咨询。",
+      "audience": "有 ChatGPT 订阅需求的用户",
+      "tags": [
+        "ChatGPT",
+        "订阅代充",
+        "服务咨询"
+      ],
+      "status": "微信咨询",
+      "url": "",
+      "wechat": "jinchuan-ai",
+      "cta": "复制微信号",
+      "note": "复制微信号后，在微信中搜索添加并咨询。"
     }
   ],
   "notes": [
@@ -94,6 +112,16 @@ window.JINCHUAN_CONTENT = {
         "一个小作品也值得认真完成。它可以是一页个人网站、一份读书卡片，或者一个解决日常问题的小工具。",
         "开始前写下一句话：“它帮助谁，完成什么？”然后只保留实现这句话所必需的功能。",
         "完成后亲自用一遍，把最困惑的地方改掉。能被实际使用，比堆满功能更有意义。"
+      ]
+    },
+    {
+      "id": "ai-workflow-notes",
+      "title": "我怎么整理一个 AI 工作流",
+      "summary": "从一个重复的小任务开始，记录搭建和验证过程。",
+      "category": "AI 实践 / 工作流",
+      "tags": [
+        "AI",
+        "自动化"
       ]
     }
   ],

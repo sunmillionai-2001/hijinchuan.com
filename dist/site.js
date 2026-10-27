@@ -30,6 +30,8 @@
     (item.tags || []).forEach(tag => tags.append(make('li', '', tag)));
     card.append(tags);
     if (item.audience) card.append(make('p', 'service-audience', '适合：' + item.audience));
+    const wechat = typeof item.wechat === 'string' ? item.wechat.trim() : '';
+    if (wechat) card.append(make('p', 'service-wechat', '微信号：' + wechat));
     const url = safeURL(item.url);
     if (url) {
       const action = make('a', 'button');
@@ -41,6 +43,24 @@
       const actionWrap = make('div', 'service-action');
       actionWrap.append(action);
       card.append(actionWrap);
+    } else if (wechat) {
+      const action = make('button', 'button');
+      action.type = 'button';
+      action.append(make('span', '', item.cta || '复制微信号'), make('span', 'arrow', '↗'));
+      const feedback = make('p', 'service-note');
+      feedback.setAttribute('role', 'status');
+      action.addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(wechat);
+          feedback.textContent = '微信号已复制，请在微信中搜索添加。';
+        } catch {
+          feedback.textContent = '复制未成功，请手动复制上方微信号。';
+        }
+      });
+      const actionWrap = make('div', 'service-action');
+      actionWrap.append(action);
+      card.append(actionWrap, feedback);
     }
     if (item.note) card.append(make('p', 'service-note', item.note));
     return card;

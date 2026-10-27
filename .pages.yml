@@ -79,6 +79,9 @@ content:
       - name: url
         label: 访问地址
         type: string
+      - name: wechat
+        label: 微信号（可选，可复制咨询）
+        type: string
       - name: cta
         label: 按钮文案
         type: string
